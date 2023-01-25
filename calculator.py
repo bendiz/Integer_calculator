@@ -7,8 +7,7 @@
 # 2. Define a function for each operator that your calculator provides.
 #   1. All these functions will recieve two parameters: num1, num2.
 #   2. All these functions return sum in the end.
-#   3. Make sum variable, so input doesn't change, and avoid repeated code.
-#   4. Create docstring following PEP-257 conventions
+#   3. Create docstring following PEP-257 conventions
 
 #     User input:
 #         - Trim whitespace
@@ -45,7 +44,6 @@
 # <---------- END OF DESIGN STEPS ---------->
 
 # <---------- START OF PROGRAM ---------->
-
 
 # Functions
 def add(num1: int, num2: int) -> int:
@@ -179,7 +177,6 @@ def calculation(num1: int, num2: int, num3: int, op1: str, op2: str) -> str:
     return calc_msg
 
 
-# Error checking and correcting user input
 def calculator_on() -> tuple:
     """
     Runs our calculator by asking the user for 5 inputs and error checks them.
