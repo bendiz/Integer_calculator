@@ -158,6 +158,21 @@ def magic_function(num1: int, num2: int, op: str) -> int:
 
 
 def calculation(num1: int, num2: int, num3: int, op1: str, op2: str) -> str:
+    """
+    Calculates the first math expression by calling the magic_function,
+    then it calculates the result of our first math expression with
+    the last number and finally returns a string with our full calculation.
+
+    Args:
+        num1 (int): First operand
+        num2 (int): Second operand
+        num3 (int): Third operand
+        op1 (str): Operator
+        op2 (str): Operator
+
+    Returns:
+        str: The full result of the calculation in a formatted string.
+    """
     first_calculation = magic_function(num1, num2, op1)
     combined_calculation = magic_function(first_calculation, num3, op2)
     calc_msg = f"(({num1} {op1} {num2}) {op2} {num3}) = {combined_calculation}"
@@ -166,15 +181,25 @@ def calculation(num1: int, num2: int, num3: int, op1: str, op2: str) -> str:
 
 # Error checking and correcting user input
 def calculator_on() -> tuple:
+    """
+    Runs our calculator by asking the user for 5 inputs and error checks them.
+    Prints a string in the console forcing the user to re-enter details
+    if the input is not valid. When all inputs are valid, the function
+    returns a tuple with the user inputs num1, num2, num3, op1, op2.
+    Turns our num1-3 inputs from str to int.
+
+    Returns:
+        tuple: Error-checked, stripped user inputs: num1, num2, num3, op1, op2.
+    """
     VALID_OPERATOR = ["+", "-", "//", "%", "*", "**"]
     msg = "Please input "
     while True:
         try:
             # Checks if num are of type int and that the operand match valid op
             num1 = int(input(f"{msg}first integer: "))
-            op1 = str(input(f"{msg}first operator {VALID_OPERATOR}:")).strip()
+            op1 = input(f"{msg}first operator {VALID_OPERATOR}:").strip()
             num2 = int(input(f"{msg}second integer: "))
-            op2 = str(input(f"{msg}second operator {VALID_OPERATOR}:")).strip()
+            op2 = input(f"{msg}second operator {VALID_OPERATOR}:").strip()
             if op1 not in VALID_OPERATOR or op2 not in VALID_OPERATOR:
                 raise ValueError
             num3 = int(input(f"{msg}third integer: "))
