@@ -194,10 +194,12 @@ def calculator_on() -> tuple:
         try:
             # Checks if num are of type int and that the operand match valid op
             num1 = int(input(f"{msg}first integer: "))
-            op1 = input(f"{msg}first operator {VALID_OPERATOR}:").strip()
+            op1 = input(f"{msg}first operator {VALID_OPERATOR}: ").strip()
+            if op1 not in VALID_OPERATOR:
+                raise ValueError
             num2 = int(input(f"{msg}second integer: "))
-            op2 = input(f"{msg}second operator {VALID_OPERATOR}:").strip()
-            if op1 not in VALID_OPERATOR or op2 not in VALID_OPERATOR:
+            op2 = input(f"{msg}second operator {VALID_OPERATOR}: ").strip()
+            if op2 not in VALID_OPERATOR:
                 raise ValueError
             num3 = int(input(f"{msg}third integer: "))
             break
