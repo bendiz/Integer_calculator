@@ -18,22 +18,22 @@
 
 #     Functions:
 #          Addition (activates on key "+" inside magic_function)
-#             sum = num1 + num2
+#             return num1 + num2
 
 #         Subtraction (activates on key "-" inside magic_function)
-#             sum = num1 - num2
+#             return num1 - num2
 
 #         Division (activates on key "//" inside magic_function)
-#             sum = num1 // num2 (because we want an int as output).
+#             return num1 // num2 (because we want an int as output).
 
 #         Modulo (activates on key "%" inside magic_function)
-#             sum = num1 % num2
+#             return num1 % num2
 
 #         Multiplication (activates on key "*" inside magic_function)
-#             sum = num1 * num2
+#             return num1 * num2
 
 #         Exponentiation (activates on key "**" inside magic_function)
-#             sum = num1 ** num2
+#             return num1 ** num2
 
 # 3. Num3 and op2 input goes in magic_function with int from first calculation.
 #     1. magic_function(num1, num2, op1) return int to be used in calculation2.
@@ -41,13 +41,13 @@
 #     magic_function as num1 and num3 input as num2.
 
 # 4. End with a string that displays the entire calculation.
+
 # <---------- END OF DESIGN STEPS ---------->
 
 # <---------- START OF PROGRAM ---------->
 
 # Global variables
-sum = 0
-VALID_OPERATOR = {"+", "-", "//", "%", "*", "**"}
+VALID_OPERATOR = ["+", "-", "//", "%", "*", "**"]
 msg = "Please enter the"
 
 
@@ -63,8 +63,7 @@ def add(num1: int, num2: int) -> int:
     Returns:
         int: The sum of num1 added together with num2.
     """
-    sum = num1 + num2
-    return sum
+    return num1 + num2
 
 
 def sub(num1: int, num2: int) -> int:
@@ -78,8 +77,7 @@ def sub(num1: int, num2: int) -> int:
     Returns:
         int: The sum of num1 subtracted by num2.
     """
-    sum = num1 - num2
-    return sum
+    return num1 - num2
 
 
 def int_div(num1: int, num2: int) -> int:
@@ -93,8 +91,7 @@ def int_div(num1: int, num2: int) -> int:
     Returns:
         int: The sum of num1 integer divided by num2
     """
-    sum = num1 // num2
-    return sum
+    return num1 // num2
 
 
 def modulo(num1: int, num2: int) -> int:
@@ -108,8 +105,7 @@ def modulo(num1: int, num2: int) -> int:
     Returns:
         int: The sum of the remainder after num1 is integer divided by num2.
     """
-    sum = num1 % num2
-    return sum
+    return num1 % num2
 
 
 def mult(num1: int, num2: int) -> int:
@@ -123,8 +119,7 @@ def mult(num1: int, num2: int) -> int:
     Returns:
         int: The sum of the multiplication of num1 and num2.
     """
-    sum = num1 * num2
-    return sum
+    return num1 * num2
 
 
 def exponentiation(num1: int, num2: int) -> int:
@@ -138,8 +133,7 @@ def exponentiation(num1: int, num2: int) -> int:
     Returns:
         int: The sum the exponentiation of num1 by num2.
     """
-    sum = num1 ** num2
-    return sum
+    return num1**num2
 
 
 def magic_function(num1: int, num2: int, op: str) -> int:
@@ -156,8 +150,14 @@ def magic_function(num1: int, num2: int, op: str) -> int:
     Returns:
         int: The result of the operation
     """
-    options = {"+": add, "-": sub, "//": int_div, "%": modulo, "*": mult,
-               "**": exponentiation}
+    options = {
+        "+": add,
+        "-": sub,
+        "//": int_div,
+        "%": modulo,
+        "*": mult,
+        "**": exponentiation,
+    }
     return options[op](num1, num2)
 
 
