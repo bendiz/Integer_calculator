@@ -46,10 +46,6 @@
 
 # <---------- START OF PROGRAM ---------->
 
-# Global variables
-VALID_OPERATOR = ["+", "-", "//", "%", "*", "**"]
-msg = "Please enter the"
-
 
 # Functions
 def add(num1: int, num2: int) -> int:
@@ -161,25 +157,36 @@ def magic_function(num1: int, num2: int, op: str) -> int:
     return options[op](num1, num2)
 
 
+def calculation(num1: int, num2: int, num3: int, op1: str, op2: str) -> str:
+    first_calculation = magic_function(num1, num2, op1)
+    combined_calculation = magic_function(first_calculation, num3, op2)
+    calc_msg = f"(({num1} {op1} {num2}) {op2} {num3}) = {combined_calculation}"
+    return calc_msg
+
+
 # Error checking and correcting user input
-while True:
-    try:
-        # Checks if num are of type int and that the operand match valid op.
-        num1 = int(input(f"{msg} first integer: "))
-        op1 = str(input(f"{msg} first operator {VALID_OPERATOR}: ")).strip()
-        num2 = int(input(f"{msg} second integer: "))
-        op2 = str(input(f"{msg} second operator {VALID_OPERATOR}: ")).strip()
-        if op1 not in VALID_OPERATOR or op2 not in VALID_OPERATOR:
-            raise ValueError
-        num3 = int(input(f"{msg} third integer: "))
-        break
-    except ValueError:
-        # To prevent KeyError in our magic_function.
-        print(f"Wrong input type! Int and {VALID_OPERATOR} only...")
+def calculator_on() -> tuple:
+    VALID_OPERATOR = ["+", "-", "//", "%", "*", "**"]
+    msg = "Please input "
+    while True:
+        try:
+            # Checks if num are of type int and that the operand match valid op
+            num1 = int(input(f"{msg}first integer: "))
+            op1 = str(input(f"{msg}first operator {VALID_OPERATOR}:")).strip()
+            num2 = int(input(f"{msg}second integer: "))
+            op2 = str(input(f"{msg}second operator {VALID_OPERATOR}:")).strip()
+            if op1 not in VALID_OPERATOR or op2 not in VALID_OPERATOR:
+                raise ValueError
+            num3 = int(input(f"{msg}third integer: "))
+            break
+        except ValueError:
+            # To prevent KeyError in our magic_function.
+            print(f"Wrong input type! Int and {VALID_OPERATOR} only...")
+    return num1, num2, num3, op1, op2
 
 
-# Calculates the three numbers in two steps and prints our full calculation
-first_calculation = magic_function(num1, num2, op1)
-combined_calculation = magic_function(first_calculation, num3, op2)
-calc_msg = f"(({num1} {op1} {num2}) {op2} {num3}) = {combined_calculation}"
-print(calc_msg)
+# Makes function only run when file is run directly and not imported
+if __name__ == "__main__":
+    num1, num2, num3, op1, op2 = calculator_on()
+    result = calculation(num1, num2, num3, op1, op2)
+    print(result)
